@@ -2,6 +2,7 @@
 import flatpickr from 'flatpickr';
 // Додатковий імпорт стилів
 import 'flatpickr/dist/flatpickr.min.css';
+import { Notify } from 'notiflix/build/notiflix-notify-aio';
 
 const refs = {
   datetimePicker: document.querySelector('#datetime-picker'),
@@ -23,9 +24,10 @@ const options = {
     selectedDate = selectedDates[0];
 
     if (selectedDate.getTime() <= Date.now()) {
-      window.alert('Please choose a date in the future');
+      Notify.warning('Please choose a date in the future');
       refs.startBtn.disabled = true;
     } else {
+      Notify.success('Valid date');
       refs.startBtn.disabled = false;
     }
   },
