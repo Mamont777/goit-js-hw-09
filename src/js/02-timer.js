@@ -49,6 +49,7 @@ const timer = {
 
       if (deltaTime < 0) {
         clearInterval(this.intervalId);
+        return;
       }
       updateTimer(timeComponents);
     }, 1000);

@@ -8,8 +8,6 @@ formEl.addEventListener('submit', event => {
   let stepInput = parseInt(step.value);
   let amountInput = parseInt(amount.value);
   for (let i = 1; i <= amountInput; i += 1) {
-    delayInput += stepInput;
-
     createPromise(i, delayInput)
       .then(({ position, delay }) => {
         Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
@@ -17,6 +15,7 @@ formEl.addEventListener('submit', event => {
       .catch(({ position, delay }) => {
         Notify.failure(`❌ Rejected promise ${position} in ${delay}ms`);
       });
+    delayInput += stepInput;
   }
   event.currentTarget.reset();
 });
